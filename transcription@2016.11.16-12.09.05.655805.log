@@ -1,0 +1,154 @@
+task = transcription
+
+network:
+task = transcription
+13MultilayerNet
+------------------------------
+7 layers:
+10InputLayer "input" 1D (+) size 2
+(R) 9LstmLayerI4TanhS0_8LogisticE "hidden_0_0" 1D (-) inputSize 488 outputSize 122 source "input" 366 peeps
+(R) 9LstmLayerI4TanhS0_8LogisticE "hidden_0_1" 1D (+) inputSize 488 outputSize 122 source "input" 366 peeps
+11GatherLayer "gather_0" 1D (+) size 244 source "hidden_0_0"
+(R) 9LstmLayerI4TanhS0_8LogisticE "hidden_1_0" 1D (-) inputSize 488 outputSize 122 source "gather_0" 366 peeps
+(R) 9LstmLayerI4TanhS0_8LogisticE "hidden_1_1" 1D (+) inputSize 488 outputSize 122 source "gather_0" 366 peeps
+18TranscriptionLayer "output" 1D (+) size 65 source "hidden_1_0"
+------------------------------
+15 connections:
+"bias_to_hidden_0_0" (488 wts)
+"hidden_0_0_to_hidden_0_0_delay_1" (59536 wts)
+"input_to_hidden_0_0" (976 wts)
+"bias_to_hidden_0_1" (488 wts)
+"hidden_0_1_to_hidden_0_1_delay_-1" (59536 wts)
+"input_to_hidden_0_1" (976 wts)
+"bias_to_hidden_1_0" (488 wts)
+"hidden_1_0_to_hidden_1_0_delay_1" (59536 wts)
+"gather_0_to_hidden_1_0" (119072 wts)
+"bias_to_hidden_1_1" (488 wts)
+"hidden_1_1_to_hidden_1_1_delay_-1" (59536 wts)
+"gather_0_to_hidden_1_1" (119072 wts)
+"bias_to_output" (65 wts)
+"hidden_1_0_to_output" (7930 wts)
+"hidden_1_1_to_output" (7930 wts)
+------------------------------
+bidirectional = true
+symmetry = false
+497581 weights
+
+setting random seed to 4034737767
+
+loading dynamic data from /home/ajinkyak/Workspace/Research_Work/HIN_transliteration_demo/Transliteration_data_creation/transcription@2016.02.23-18.04.43.525906.best_labelError.save
+epoch = 1
+
+------------------------------
+test data:
+numSequences = 1
+numTimesteps = 6
+avg timesteps/seq = 6
+1 filenames
+/home/ajinkyak/Workspace/Research_Work/HIN_transliteration_demo/Transliteration_data_creation/temp_mr.nc
+inputSize = 2
+outputSize = 64
+numDims = 1
+task = transcription
+shuffled = false
+64 target labels
+0 \u0901 (0 = 0%)
+1 \u0902 (0 = 0%)
+2 \u0905 (0 = 0%)
+3 \u0907 (0 = 0%)
+4 \u0906 (0 = 0%)
+5 \u0909 (0 = 0%)
+6 \u0908 (0 = 0%)
+7 \u090b (0 = 0%)
+8 \u090a (0 = 0%)
+9 \u090d (0 = 0%)
+10 \u090f (0 = 0%)
+11 \u0911 (0 = 0%)
+12 \u0910 (0 = 0%)
+13 \u0913 (0 = 0%)
+14 \u0915 (0 = 0%)
+15 \u0914 (0 = 0%)
+16 \u0917 (0 = 0%)
+17 \u0916 (0 = 0%)
+18 \u0919 (0 = 0%)
+19 \u0918 (0 = 0%)
+20 \u091b (0 = 0%)
+21 \u091a (0 = 0%)
+22 \u091d (0 = 0%)
+23 \u091c (0 = 0%)
+24 \u091f (0 = 0%)
+25 \u091e (0 = 0%)
+26 \u0921 (0 = 0%)
+27 \u0920 (0 = 0%)
+28 \u0923 (0 = 0%)
+29 \u0922 (0 = 0%)
+30 \u0925 (0 = 0%)
+31 \u0924 (0 = 0%)
+32 \u0927 (0 = 0%)
+33 \u0926 (0 = 0%)
+34 \u0928 (0 = 0%)
+35 \u092b (0 = 0%)
+36 \u092a (0 = 0%)
+37 \u092d (0 = 0%)
+38 \u092c (0 = 0%)
+39 \u092f (0 = 0%)
+40 \u092e (0 = 0%)
+41 \u0931 (0 = 0%)
+42 \u0930 (0 = 0%)
+43 \u0933 (0 = 0%)
+44 \u0932 (0 = 0%)
+45 \u0935 (0 = 0%)
+46 \u0937 (0 = 0%)
+47 \u0936 (0 = 0%)
+48 \u0939 (0 = 0%)
+49 \u0938 (0 = 0%)
+50 \u093f (0 = 0%)
+51 \u093e (0 = 0%)
+52 \u0941 (0 = 0%)
+53 \u0940 (0 = 0%)
+54 \u0943 (0 = 0%)
+55 \u0942 (0 = 0%)
+56 \u0945 (0 = 0%)
+57 \u0947 (0 = 0%)
+58 \u0949 (0 = 0%)
+59 \u0948 (0 = 0%)
+60 \u094b (0 = 0%)
+61 - (1 = 100%)
+62 \u094d (0 = 0%)
+63 \u094c (0 = 0%)
+totalTargetStringLength = 1
+
+calculating test errors...
+data sequence:
+file = /home/ajinkyak/Workspace/Research_Work/HIN_transliteration_demo/Transliteration_data_creation/temp_mr.nc
+index = 0
+tag = 1
+input shape = (6 2)
+timesteps = 6
+target label sequence (length 1):
+-
+output label sequence (length 3):
+\u0913 \u0928 \u093e
+output shape = (6 65)
+errors:
+ctcError 16.9654
+deletions 0
+insertions 2
+labelError 3
+seqError 1
+substitutions 1
+
+------------------------------
+test errors:
+ctcError 16.9654
+deletions 0%
+insertions 200%
+labelError 300%
+seqError 100%
+substitutions 100%
+------------------------------
+1 sequences tested in 0.003519 seconds
+average 0.003519 seconds per sequence
+WARNING: maxTestsNoBest in config but never used
+WARNING: totalEpochs in config but never used
+
